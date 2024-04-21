@@ -93,15 +93,15 @@ function Submit(){
 
     let co3Q = "update secqs.grade set co3_q_grade ="+co3+" where question_id ="+page +";"
 
-    $.get('http://127.0.0.1:3000/query', {query: co1Q}, function(data) {
+    $.get('http://127.0.0.1:3000/query', {query: co1Q}, function() {
         console.log("CO1:"+co1)
 
     });
-    $.get('http://127.0.0.1:3000/query', {query: co2Q}, function(data) {
+    $.get('http://127.0.0.1:3000/query', {query: co2Q}, function() {
         console.log("CO2:"+co2)
 
     });
-    $.get('http://127.0.0.1:3000/query', {query: co3Q}, function(data) {
+    $.get('http://127.0.0.1:3000/query', {query: co3Q}, function() {
         console.log("CO3:"+co3)
     });
     document.getElementById('submitButt').value= "Submitted"
