@@ -59,8 +59,9 @@ function R3(){
     });
 }
 
-function NextPage(){//TODO: also need to add a update query for the rating of the answers
+function NextPage(){
     page +=1
+    document.getElementById('submitButt').value= "Submit"
     start()
 }
 
@@ -76,9 +77,34 @@ function Submit(){
     let co2 = $('input[type=radio][name=co2Rate]:checked').val()
     let co3 = $('input[type=radio][name=co3Rate]:checked').val()
 
-    console.log("CO1:"+co1)
-    console.log("CO2:"+co2)
-    console.log("CO3:"+co3)
+    if(co1<1 || co1 === undefined){
+        co1 = 0
+    }
+    if(co2<1 || co2 === undefined){
+        co2 = 0
+    }
+    if(co3<1 || co3 === undefined){
+        co3 = 0
+    }
+
+    let co1Q = "update secqs.grade set co1_q_grade ="+co1+" where question_id ="+page +";"
+
+    let co2Q = "update secqs.grade set co2_q_grade ="+co2+" where question_id ="+page +";"
+
+    let co3Q = "update secqs.grade set co3_q_grade ="+co3+" where question_id ="+page +";"
+
+    $.get('http://127.0.0.1:3000/query', {query: co1Q}, function(data) {
+        console.log("CO1:"+co1)
+
+    });
+    $.get('http://127.0.0.1:3000/query', {query: co2Q}, function(data) {
+        console.log("CO2:"+co2)
+
+    });
+    $.get('http://127.0.0.1:3000/query', {query: co3Q}, function(data) {
+        console.log("CO3:"+co3)
+    });
+    document.getElementById('submitButt').value= "Submitted"
 
 }
 
