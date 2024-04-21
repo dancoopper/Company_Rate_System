@@ -49,7 +49,7 @@ app.get('/query', (req, res) => {
     // Execute the SQL query
     connection.query(query, (error, results, fields) => {
         if (error) {
-            console.error('Error executing query: ' + error.message);
+            console.error('Error executing query: ' + error.message + " IP: " + req.ip);
             res.status(500).send('Error executing query');
             return;
         }
