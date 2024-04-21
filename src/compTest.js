@@ -11,6 +11,8 @@ let startPage = ["select q.questions from secqs.questions q where q.question_id 
     "from secqs.co3 c3\n" +
     "where c3.question_id ="+ page + ";"]
 function start(){
+
+    $('#Qnum').text("Question Number: " + page)
     console.log(page)
     $.get('http://127.0.0.1:3000/query', {query: "select q.questions from secqs.questions q where q.question_id =" +page + ";"}, function(data) {
         $('#question').empty();

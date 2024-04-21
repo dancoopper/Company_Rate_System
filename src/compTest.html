@@ -9,6 +9,7 @@
         body{
             display: grid;
             grid-template-areas:
+                "title title title"
                 "q  q q"
                 "co1 co2 co3"
                 "answer1 answer2 answer3"
@@ -39,6 +40,10 @@
             border: red solid 1px;
             text-align: center;
             grid-area: co3;
+        }
+        #Qnum{
+            grid-area: title;
+            text-align: center;
         }
         #question{
             text-align: center;
@@ -87,7 +92,7 @@
     </style>
 </head>
 <body onload="start()">
-
+<div id="Qnum">test</div>
 <!--<input type="text" id="queryInput" placeholder="Enter your SQL query">
 <button onclick="sendQuery()">Send Query</button>-->
 <div id="question">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab architecto, assumenda atque autem beatae, consequuntur dicta dolorem ducimus eligendi et facere fuga fugiat hic id illum, laborum laudantium magni maxime modi natus nemo odio quidem ratione recusandae reiciendis repudiandae sapiente voluptates! A architecto corporis, dolore dolorum error esse eum eveniet exercitationem explicabo facilis fugiat inventore iusto labore minus modi molestias nostrum numquam omnis placeat porro praesentium quia quod rem repudiandae saepe sapiente tempora temporibus ut vel veniam vero vitae voluptatem voluptatum. A accusamus aliquid aut beatae dicta doloribus dolorum ducimus eligendi explicabo fugit harum inventore iure labore laudantium modi molestiae necessitatibus nostrum numquam optio, perferendis provident quaerat reiciendis sed soluta tempora? Amet aspernatur beatae dicta doloremque doloribus ducimus est et exercitationem facilis, fugit harum iste obcaecati, quia quo ratione sapiente veniam voluptates! A accusantium architecto commodi corporis deserunt distinctio dolores dolorum error eum exercitationem facere fugit in ipsa magnam molestiae nulla perspiciatis placeat possimus praesentium, quas quis rem repellendus repudiandae rerum sequi suscipit veniam veritatis. Ab accusantium asperiores, deserunt illo inventore, iste labore mollitia natus nisi nobis nostrum obcaecati perferendis rem repudiandae sequi, ullam unde ut veniam voluptatem voluptatum? Accusamus alias, atque aut earum facilis in incidunt ipsum minima non, possimus provident quaerat quam quisquam repellat tenetur unde voluptas! Cupiditate deserunt eaque et ex fuga, minus nam nemo non nulla porro quaerat quibusdam suscipit voluptatem. Animi atque beatae, consectetur cupiditate dignissimos dolor dolore, dolorem excepturi expedita hic ipsam labore minima minus porro provident repudiandae tempora temporibus unde velit veritatis voluptate!</div>
