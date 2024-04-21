@@ -1,6 +1,8 @@
 let page = 1
 
-let startPage = ["select q.questions from secqs.questions q where q.question_id =" + page + ";",
+const ip = "10.0.0.68"
+
+/*let startPage = ["select q.questions from secqs.questions q where q.question_id =" + page + ";",
     "select c1.question_answer " +
     "from secqs.co1 c1 " +
     "where c1.question_id =" + page + ";",
@@ -9,15 +11,15 @@ let startPage = ["select q.questions from secqs.questions q where q.question_id 
     "where c2.question_id =" + page + ";",
     "select c3.question_answer\n" +
     "from secqs.co3 c3\n" +
-    "where c3.question_id =" + page + ";"]
+    "where c3.question_id =" + page + ";"]*/
 
 function start() {
 
     $('#Qnum').text("Question Number: " + page)
 
-    $.get('http://127.0.0.1:3000/query', {query: "select q.questions from secqs.questions q where q.question_id =" + page + ";"}, function (data) {
+    $.get('http://'+ip+':3000/query', {query: "select q.questions from secqs.questions q where q.question_id =" + page + ";"}, function (data) {
         $('#question').empty();
-
+        console.log(data)
         data.forEach(c => {
             $('#question').text(c.questions)
         })
@@ -29,7 +31,7 @@ function start() {
 }
 
 function R1() {
-    $.get('http://127.0.0.1:3000/query', {
+    $.get('http://'+ip+':3000/query', {
         query: "select c1.question_answer " +
             "from secqs.co1 c1 " +
             "where c1.question_id =" + page + ";"
@@ -43,7 +45,7 @@ function R1() {
 }
 
 function R2() {
-    $.get('http://127.0.0.1:3000/query', {
+    $.get('http://'+ip+':3000/query', {
         query: "select c2.question_answer " +
             "from secqs.co2 c2 " +
             "where c2.question_id =" + page + ";"
@@ -57,7 +59,7 @@ function R2() {
 }
 
 function R3() {
-    $.get('http://127.0.0.1:3000/query', {
+    $.get('http://'+ip+':3000/query', {
         query: "select c3.question_answer\n" +
             "from secqs.co3 c3\n" +
             "where c3.question_id =" + page + ";"
@@ -104,15 +106,15 @@ function Submit() {
 
     let co3Q = "update secqs.grade set co3_q_grade =" + co3 + " where question_id =" + page + ";"
 
-    $.get('http://127.0.0.1:3000/query', {query: co1Q}, function () {
+    $.get('http://'+ip+':3000/query', {query: co1Q}, function () {
         console.log("CO1:" + co1)
 
     });
-    $.get('http://127.0.0.1:3000/query', {query: co2Q}, function () {
+    $.get('http://'+ip+':3000/query', {query: co2Q}, function () {
         console.log("CO2:" + co2)
 
     });
-    $.get('http://127.0.0.1:3000/query', {query: co3Q}, function () {
+    $.get('http://'+ip+':3000/query', {query: co3Q}, function () {
         console.log("CO3:" + co3)
     });
     document.getElementById('submitButt').value = "Submitted"
@@ -122,7 +124,7 @@ function Submit() {
 function sendQuery() {
     let query = $('#queryInput').val();
     let Qquery = decodeURI(query)
-    $.get('http://127.0.0.1:3000/query', {query: Qquery}, function (data) {
+    $.get('http://'+ip+':3000/query', {query: Qquery}, function (data) {
         $('#results').empty();
         data.forEach(function (row) {
             $('#results').append(JSON.stringify(row) + '<br>');

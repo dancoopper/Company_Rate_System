@@ -30,6 +30,16 @@ connection.connect((err) => {
     console.log('Connected to MySQL database as id ' + connection.threadId);
 });
 
+app.get('/', (req,res)=>{
+    res.redirect('/homepage')
+})
+
+app.get('/homepage', (req,res)=>{
+    res.sendFile('C:\\Programing-home\\js\\comp\\src\\compTest.html');
+})
+app.get('/compTest.js',(req,res)=>{
+    res.sendFile('C:\\Programing-home\\js\\comp\\src\\compTest.js')
+})
 // Define a route to handle incoming queries
 app.get('/query', (req, res) => {
     const query = req.query.query; // Get the query string parameter from the request URL
@@ -47,8 +57,10 @@ app.get('/query', (req, res) => {
     });
 });
 
+
 // Start the Express server
 const port = 3000; // You can choose any port you like
-app.listen(port, () => {
+const ip = "10.0.0.68"
+app.listen(port, ip, () => {
     console.log('Server is running on port ' + port);
 });
