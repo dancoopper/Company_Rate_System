@@ -72,7 +72,14 @@ function PrevPage(){
 }
 
 function Submit(){
-    console.log(document.querySelector('input[name="co1Rate"]:checked').value)
+    let co1 = $('input[type=radio][name=co1Rate]:checked').val()
+    let co2 = $('input[type=radio][name=co2Rate]:checked').val()
+    let co3 = $('input[type=radio][name=co3Rate]:checked').val()
+
+    console.log("CO1:"+co1)
+    console.log("CO2:"+co2)
+    console.log("CO3:"+co3)
+
 }
 
 function sendQuery() {
