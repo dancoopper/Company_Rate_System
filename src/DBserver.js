@@ -29,7 +29,9 @@ connection.connect((err) => {
     }
     console.log('Connected to MySQL database as id ' + connection.threadId);
 });
-
+app.get('', (req,res)=>{
+    res.redirect('/homepage')
+})
 app.get('/', (req,res)=>{
     res.redirect('/homepage')
 })
