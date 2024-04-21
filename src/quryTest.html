@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tests</title>
+</head>
+<body>
+<input type="text" id="queryInput" placeholder="Enter your SQL query">
+<button onclick="sendQuery()">Send Query</button>
+
+<div id="results"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function sendQuery() {
+        let query = $('#queryInput').val();
+        $.get('http://127.0.0.1:3000/query', {query: query}, function(data) {
+            $('#results').empty();
+            data.forEach(function(row) {
+                $('#results').append(JSON.stringify(row) + '<br>');
+            });
+        });
+    }
+</script>
+</body>
+</html>
